@@ -9,7 +9,7 @@ createApp({
         "nom": "Batterie 12V",
         "prix": 120,
         "categorie": "Électricité",
-        "image" : " " ,
+        "image" : "./images/batterie12vl.webp" ,
         "disponible": true
     },
     {
@@ -17,7 +17,7 @@ createApp({
         "nom": "Filtre à huile",
         "prix": 15,
         "categorie": "Filtration",
-        "image" : " " ,
+        "image" : "./images/filtrehuile.webp" ,
         "disponible": true
     },
     {
@@ -25,7 +25,7 @@ createApp({
         "nom": "Bougies d'allumage (x4)",
         "prix": 35,
         "categorie": "Moteur" ,
-        "image" : " " ,
+        "image" : "./images/Bougiesallumage (x4).webp" ,
         "disponible": true
     },
     {
@@ -34,14 +34,14 @@ createApp({
         "prix": 80,
         "categorie": "Freinage",
         "image" : " " ,
-        "disponible": true
+        "disponible": false
     },
     {
         "id": 5,
         "nom": "Courroie de distribution",
         "prix": 90,
         "categorie": "Moteur",
-        "image" : " " ,
+        "image" : "./images/courroie-de-distribution-voiture.jpg" ,
         "disponible": true
     },
     {
@@ -49,7 +49,7 @@ createApp({
         "nom": "Pompe à eau",
         "prix": 70,
         "categorie": "Refroidissement",
-        "image" : " " ,
+        "image" : "./images/pompe-a-eau.jpg" ,
         "disponible": true
     },
     {
@@ -57,7 +57,7 @@ createApp({
         "nom": "Amortisseurs arrière (x2)",
         "prix": 150,
         "categorie": "Suspension",
-        "image" : " " ,
+        "image" : "./images/amortisseur.webp" ,
         "disponible": true
     },
     {
@@ -65,7 +65,7 @@ createApp({
         "nom": "Filtre à air",
         "prix": 20,
         "categorie": "Filtration",
-        "image" : " " ,
+        "image" : "./images/filtre-a-air.jpg" ,
         "disponible": true
     },
     {
@@ -73,7 +73,7 @@ createApp({
         "nom": "Capteur ABS",
         "prix": 50,
         "categorie": "Sécurité",
-        "image" : " " ,
+        "image" : "./images/capteur-ABS-2.jpg" ,
         "disponible": true
     },
     {
@@ -81,7 +81,7 @@ createApp({
         "nom": "Radiateur de refroidissement",
         "prix": 130,
         "categorie": "Refroidissement",
-        "image" : " " ,
+        "image" : "./images/Rasiateur.jpeg" ,
         "disponible": true
     },
     {
@@ -89,7 +89,7 @@ createApp({
         "nom": "Alternateur",
         "prix": 200,
         "categorie": "Électricité",
-        "image" : " " ,
+        "image" : "./images/car-alternator.jpg" ,
         "disponible": true
     },
     {
@@ -97,7 +97,7 @@ createApp({
         "nom": "Démarreur",
         "prix": 180,
         "categorie": "Électricité",
-        "image" : " " ,
+        "image" : "./images/demarreur-voiture-moteur-1024x587.jpg" ,
         "disponible": true
     },
     {
@@ -105,7 +105,7 @@ createApp({
         "nom": "Kit d'embrayage",
         "prix": 220,
         "categorie": "Transmission",
-        "image" : " " ,
+        "image" : "./images/kitembrayage.jpeg" ,
         "disponible": true
     },
     {
@@ -114,14 +114,14 @@ createApp({
         "prix": 110,
         "categorie": "Moteur",
         "image" : " " ,
-        "disponible": true
+        "disponible": false
     },
     {
         "id": 15,
         "nom": "Pompe à carburant",
         "prix": 90,
         "categorie": "Carburant",
-        "image" : " " ,
+        "image" : "./images/Pompecarburant.webp" ,
         "disponible": true
     },
     {
@@ -130,14 +130,14 @@ createApp({
         "prix": 45,
         "categorie": "Sécurité",
          "image" : " " ,
-        "disponible": true
+        "disponible": false
     },
     {
         "id": 17,
         "nom": "Rétroviseur extérieur",
         "prix": 60,
         "categorie": "Carrosserie",
-         "image" : " " ,
+         "image" : "./images/retroviseur.webp" ,
         "disponible": true
     },
     {
@@ -145,7 +145,7 @@ createApp({
         "nom": "Échappement complet",
         "prix": 250,
         "categorie": "Échappement",
-         "image" : " " ,
+         "image" : "./images/echappement.webp" ,
         "disponible": true
     },
     {
@@ -153,7 +153,7 @@ createApp({
         "nom": "Vanne EGR",
         "prix": 140,
         "categorie": "Moteur",
-         "image" : " " ,
+         "image" : "./images/vane.webp" ,
         "disponible": true
     },
     {
@@ -207,28 +207,26 @@ createApp({
 ],
 
     filtrerecherche: "" ,
-    affichehomme:true ,
-    affichefemme:true ,
-    affichecontact:false ,
-    affichetailleimage: "medium",
-    miseenforme: false
+    afficheparcategorie: "",
+    tri_prix: "Croissant",
 
-    
-    };
+    }
   },
   computed:{
-      filterpiece(){
-          return this.personnes.filter(e=>{
-             const correspondpieces =
-          (this.affichehomme && e.gender === "male") ||
-          (this.affichefemme && e.gender === "female");
+      filtrepiece(){
+          let result=this.pieces.filter(e=>
+            (e.disponible === true &&
+             e.nom.toLowerCase().includes(this.filtrerecherche.toLowerCase()) 
+             && (e.categorie===this.afficheparcategorie||this.afficheparcategorie === ""))
+        
+            )
+             if (this.tri_prix==="Croissant"){
+               result.sort((a,b)=>a.prix-b.prix);
+             }else{
+               result.sort((a,b)=>b.prix-a.prix);
+             }
 
-        const correspondNom =
-          e.name.first.toLowerCase().includes(this.filtrenom.toLowerCase()) ||
-          e.name.last.toLowerCase().includes(this.filtrenom.toLowerCase());
-
-        return correspondGenre && correspondNom;
-         })
+        return result
       }
      
   }
