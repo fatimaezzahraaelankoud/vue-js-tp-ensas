@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue CDN TP3</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+   <div id="app" >
+   <div class="header">
+    <img src="WhatsApp Image 2025-10-20 à 12.32.58_216d6e73.jpg" width="100">
+    <h1>les bonnes pièces</h1>
+    
+   </div>
+   <label class="label1">Rechercher: 
+    <input class="input" type="text" name="nom" v-model="filtrerecherche">
+    <button>OK</button>
+   </label>
+   <br>
+   <div class="label2">
+   <label >Filtrer par: 
+    <br>
+    <label>Categorie:
+      <select v-model="aficheparcategorie">
+      <option value="Électricité">Électricité</option>
+      <option value="Filtration">Filtration</option>
+      <option value="Freinage">Freinage</option>
+      <option value="Refroidissement">Refroidissement</option>
+      <option value="Suspension">Suspension</option>
+      <option value="Sécurité">Sécurité</option>
+      <option value="Transmission">Transmission</option>
+
+
+      
+    </select></label>
+    <label>Mise en forme     
+      <input type="checkbox" v-model="miseenforme"></label>
+   </label>
+   </div>
+   <br>
+   <div >
+    <div v-for="p in filterpersonne" :class="{'forme': miseenforme}">
+      <img :src="p.picture[affichetailleimage]" alt="photo">
+      <p>{{ p.name.title }} {{ p.name.first }} {{ p.name.last }} - {{ p.location.country }}</p>
+    
+      <div v-if="affichecontact">
+        <p>{{p.phone}} | {{p.email}} </p>
+    </div>
+   </div>
+    </div>
+  </div>
+   <script src="app.js">
+ 
+   </script>
+
+  </body>
+</html>
