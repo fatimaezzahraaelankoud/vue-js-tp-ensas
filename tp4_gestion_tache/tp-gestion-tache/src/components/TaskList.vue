@@ -11,11 +11,12 @@
       <div class="listtache" v-for="tache in taches" :key="tache.id">
         <h3>Titre: {{tache.title}}</h3>
         <div class="description_button">
-          <p>{{tache.description}}</p>
-          <button></button>
+          <p :class="{ completed: tache.completed }">{{tache.description}}</p>
+          <button @click="setDone(tache)">{{tache.completed? "✓":" " }} </button>
         </div>
       </div>
     </div>
+    <p>nombre de tache: {{calculTache}}</p>
   </div>
 </template>
 
@@ -25,7 +26,7 @@ export default {
   data() {
     return {
       taches: [],
-      allTaches: [] 
+      allTaches: [] ,
     };
   },
   methods: {
@@ -43,11 +44,20 @@ export default {
       } else if (type === "done") {
         this.taches = this.allTaches.filter(tache => tache.completed);
       }
+    },
+    setDone(tache){
+      tache.completed =!tache.completed  ;
     }
   },
   mounted() {
     this.fetchTache();
+  },
+  computed:{
+  calculTache(){
+    return this.taches.length
   }
+  }
+
 };
 </script>
 
@@ -105,6 +115,7 @@ button {
   background-color: #ffffff;
   border: 1px solid #000;
   border-radius: 4px;
+  color: #000000
 }
 
 .listtache h3 {
@@ -118,6 +129,9 @@ button {
   margin: 20px auto;
   width: 100%;
   padding: 10px 0;
+}
+.completed{
+  text-decoration: line-through
 }
 </style>
 
