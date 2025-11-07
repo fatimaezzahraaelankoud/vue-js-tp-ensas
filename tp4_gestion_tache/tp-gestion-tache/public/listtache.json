@@ -15,7 +15,7 @@
       "id": 3,
       "title": "Réviser pour l'examen",
       "description": "Relire le chapitre 5 du manuel.",
-      "completed": false
+      "completed": true
     },
      {
     "id": 4,
@@ -25,15 +25,14 @@
   },
   {
     "id": 5,
-    "title": "Étudier Vue.js",
-    "description": "Lire la documentation officielle de Vue.js 3",
-    "completed": true
-  },
-  {
-    "id": 6,
     "title": "Réviser pour l'examen",
     "description": "Relire le chapitre 5 du manuel.",
     "completed": false
+  }, {
+    "id": 6,
+    "title": "Étudier Vue.js",
+    "description": "Lire la documentation officielle de Vue.js 3",
+    "completed": true
   }
     
   ]
