@@ -1,6 +1,6 @@
 <template>
   <div class="task-list">
-    <h2>Liste des tâches</h2>
+    <h1>Liste des tâches</h1>
     <div class="buttons">
       <button @click="filterAll('all')">Toutes les tâches</button>
       <button @click="filterAll('encours')">Tâches à faire</button>
@@ -63,7 +63,7 @@ export default {
 
 <style scoped>
 .task-list {
-  border: 1px solid #000000;
+  border: 1px solid #1f34d3;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,11 +72,16 @@ export default {
   margin: 0 auto;
   text-align: center;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: #f8f7f7ff;
 }
 
-h2 {
+h1 {
   color: #1f34d3;
+}
+.listestasks{
+  background-color: #ffffffff ;
+   border: 1px solid #1f34d3
+
 }
 
 .buttons {
@@ -100,6 +105,7 @@ button {
   display: flex;
   flex-direction: column;
   margin: 10px auto;
+ 
 }
 
 .description_button {
@@ -113,7 +119,7 @@ button {
   width: 30px;
   height: 30px;
   background-color: #ffffff;
-  border: 1px solid #000;
+  border: 1px solid #1f34d3;
   border-radius: 4px;
   color: #000000
 }
@@ -121,10 +127,11 @@ button {
 .listtache h3 {
   margin-bottom: 4px;
   text-align: left;
+
 }
 
 .listestasks {
-  border: 1px solid #000000;
+   border: 1px solid #1f34d3;
   border-radius: 8px;
   margin: 20px auto;
   width: 100%;
