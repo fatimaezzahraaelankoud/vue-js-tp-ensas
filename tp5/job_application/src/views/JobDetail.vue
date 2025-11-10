@@ -11,7 +11,6 @@
 </template>
 
 <script>
-/* eslint-disable vue/multi-word-component-names */
 export default {
   props: ['id'],
   data() {
@@ -32,3 +31,16 @@ export default {
   }
 }
 </script>
+<style>
+h1 {
+  text-align: center;
+  color: #0000ff ;
+}
+div{
+text-align: center ;
+background: white; 
+border-radius: 10px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+justify-content: center 
+}
+</style>

@@ -13,11 +13,12 @@ export default {
 
 <style>
 .navbar {
-  background-color: #42b983;
-  padding: 1em;
+  background-color: #4056e8ff;
+  padding: 28px ;
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: center ;
+  gap: 80px;
+  
 }
 .navbar a {
   color: white;

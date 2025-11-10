@@ -6,7 +6,7 @@ body {
 }
 
 h1, h2 {
-  color: #42b983;
+  color: #3544e2;
   text-align: center;
 }
 
@@ -14,19 +14,22 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 400px;
+  max-width: 100%;
   margin: auto;
 }
 
 input, textarea, button {
   padding: 10px;
+  width: 60% ;
   border: 1px solid #ccc;
   border-radius: 6px;
+  margin: 10px auto ;
 }
 
 button {
-  background: #42b983;
+  background: #5215eb;
   color: white;
   border: none;
   cursor: pointer;
+  width: 20%
 }

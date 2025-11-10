@@ -12,5 +12,15 @@ export default { props: ['job'] }
 </script>
 
 <style>
-.card { background: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.card {
+background: white; 
+padding: 15px; 
+border-radius: 10px;
+margin-bottom: 10px; 
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+width: 60% ;
+margin : 10px auto ;
+justify-content: center  
+
+}
 </style>

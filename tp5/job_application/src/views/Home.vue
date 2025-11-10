@@ -1,48 +1,79 @@
 <template>
-  <div class="home">
+  <div>
     <h1>Liste des emplois</h1>
-    <router-link to="/add" class="btn"> Ajouter un emploi</router-link>
 
-    <div v-if="jobs.length">
-      <div v-for="job in jobs" :key="job.id" class="job">
-        <h3>{{ job.title }}</h3>
-        <p>{{ job.description }}</p>
-        <router-link :to="`/jobs/${job.id}`">Détails</router-link>
-      </div>
+    <!-- Barre de recherche -->
+    <FilterNav @search-jobs="searchJobs" />
+
+    <div v-if="filteredJobs.length === 0">
+      Aucun emploi trouvé.
+    </div>
+
+    <div v-for="job in filteredJobs" :key="job.id">
+      <JobCard :job="job" />
     </div>
   </div>
 </template>
 
 <script>
-/* eslint-disable vue/multi-word-component-names */
+import JobCard from '../components/JobCard.vue';
+import FilterNav from '../components/FilterNav.vue';
+
 export default {
- 
+  name: 'Home',
+  components: { JobCard, FilterNav },
   data() {
-    return { jobs: [] };
+    return {
+      jobs: [],
+      filteredJobs: []
+    };
   },
   mounted() {
-    fetch("http://localhost:3000/jobs")
-      .then((res) => res.json())
-      .then((data) => (this.jobs = data))
-      .catch((err) => console.log(err));
+    this.fetchJobs();
   },
+  methods: {
+    async fetchJobs() {
+      try {
+        const response = await fetch('http://localhost:3000/jobs');
+        const data = await response.json();
+        this.jobs = data;
+        this.filteredJobs = data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    searchJobs(query) {
+      if (!query) {
+        this.filteredJobs = this.jobs;
+      } else {
+        const q = query.toLowerCase();
+        this.filteredJobs = this.jobs.filter(job => {
+          // On vérifie que chaque champ existe avant d'utiliser .toLowerCase()
+          const title = job.title ? job.title.toLowerCase() : '';
+          const company = job.company ? job.company.toLowerCase() : '';
+          const location = job.location ? job.location.toLowerCase() : '';
+          const type = job.type ? job.type.toLowerCase() : '';
+
+          return (
+            title.includes(q) ||
+            company.includes(q) ||
+            location.includes(q) ||
+            type.includes(q)
+          );
+        });
+      }
+    }
+  }
 };
 </script>
 
 <style>
-.job {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px 0;
-}
-.btn {
-  display: inline-block;
-  margin-bottom: 15px;
-  background: #42b983;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  text-decoration: none;
+h1 {
+  text-align: center;
+  color: #0000ff ;
 }
 </style>
+
+
+
 
