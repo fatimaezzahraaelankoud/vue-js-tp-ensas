@@ -1,0 +1,70 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Introduction à Vue.js",
+      "body": "Vue.js est un framework JavaScript progressif pour construire des interfaces utilisateur. Il est simple, flexible et puissant.",
+      "tags": [
+        "vue",
+        "javascript",
+        "frontend"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Pourquoi utiliser JSON-Server",
+      "body": "JSON-Server permet de simuler une vraie API REST en quelques secondes. Idéal pour le développement et les tests rapides.",
+      "tags": [
+        "api",
+        "json",
+        "backend"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Comprendre les composants Vue",
+      "body": "Les composants sont les blocs principaux dans Vue. Ils permettent de découper l'interface en parties réutilisables et modulaires.",
+      "tags": [
+        "vue",
+        "components"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Créer un blog avec Vue 3",
+      "body": "Créer un blog avec Vue 3 est simple grâce à sa modularité. Avec des composables, des composants réutilisables et un router, vous pouvez tout faire.",
+      "tags": [
+        "vue",
+        "blog"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Découvrir Vite",
+      "body": "Vite est un outil de build ultra rapide. Il permet de développer avec un serveur de développement instantané et un bundling optimisé.",
+      "tags": [
+        "vite",
+        "javascript",
+        "tools"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Les hooks dans Vue 3",
+      "body": "Vue 3 introduit les composables et les hooks personnalisés, permettant d'organiser plus proprement la logique réutilisable.",
+      "tags": [
+        "vue",
+        "hooks"
+      ]
+    },
+    {
+      "id": "b063",
+      "title": "titre",
+      "body": "vouls ",
+      "tags": [
+        "tiret",
+        "tiret"
+      ]
+    }
+  ]
+}
