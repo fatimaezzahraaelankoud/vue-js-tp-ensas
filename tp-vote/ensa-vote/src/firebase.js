@@ -4,12 +4,12 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "TA_CLE",
-  authDomain: "TA_CLE",
-  projectId: "TA_CLE",
-  storageBucket: "TA_CLE",
-  messagingSenderId: "TA_CLE",
-  appId: "TA_CLE"
+  apiKey: "AIzaSyDbLD0DX-vEb0gU9CY5xoqUKZHyZwUZ0qA",
+  authDomain: "AIzaSyDbLD0DX-vEb0gU9CY5xoqUKZHyZwUZ0qA",
+  projectId: "ensa-vote-fatizahraaelankoud",
+  storageBucket: "ensa-vote-fatizahraaelankoud.firebasestorage.app",
+  messagingSenderId: "347887010504",
+  appId: "1:347887010504:web:b6299f5d8ee091f9bb9bfd"
 };
 
 const app = initializeApp(firebaseConfig);

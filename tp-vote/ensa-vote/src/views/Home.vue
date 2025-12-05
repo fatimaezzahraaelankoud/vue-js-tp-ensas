@@ -1,11 +1,11 @@
-
 <template>
   <div>
     <Navbar />
-    <div class="container">
-      <h2>Événements ENSA Safi</h2>
 
-      <EventCard 
+    <div class="container mt-4">
+      <h2 class="text-center mb-4">Événements ENSA Safi</h2>
+
+      <EventCard
         v-for="ev in events"
         :key="ev.id"
         :event="ev"
@@ -15,25 +15,22 @@
 </template>
 
 <script>
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
-
 import Navbar from "../components/Navbar.vue";
 import EventCard from "../components/EventCard.vue";
+import { db } from "../firebase";
+import { collection, onSnapshot } from "firebase/firestore";
 
 export default {
   components: { Navbar, EventCard },
   data() {
-    return { events: [] }
+    return { events: [] };
   },
   mounted() {
-    const eventsRef = collection(db, "Events");
-    onSnapshot(eventsRef, (snapshot) => {
-      this.events = snapshot.docs.map(doc => ({
-        id: doc.id, 
-        ...doc.data()
-      }));
+    onSnapshot(collection(db, "Events"), snap => {
+      this.events = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     });
   }
-};
+}
 </script>
+
+
