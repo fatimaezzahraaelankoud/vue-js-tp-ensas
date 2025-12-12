@@ -5,7 +5,7 @@
       <h5 class="card-title">{{ event.title }}</h5>
       <p class="card-text">{{ event.description }}</p>
 
-      <p class="text-muted">📅 {{ event.date }}</p>
+      <p class="text-muted">Date: {{ event.date }}</p>
 
       <p>
         👍 {{ event.yesVotes }} &nbsp;&nbsp;

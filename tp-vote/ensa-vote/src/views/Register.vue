@@ -39,13 +39,13 @@ export default {
         return alert("Utilisez un email ENSA (@uca.ac.ma)");
       }
 
-      // Mot de passe minimum
+ 
       if (this.password.length < 8) {
         return alert("Le mot de passe doit contenir au moins 8 caractères");
       }
 
       try {
-        // Création compte Auth
+        
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           this.email,
@@ -54,7 +54,7 @@ export default {
 
         const user = userCredential.user;
 
-        // Création d’un PROFIL dans Firestore
+        // Création d'un PROFIL dans Firestore
         await setDoc(doc(db, "Users", user.uid), {
           email: this.email,
           role: "student", // étudiant par défaut
