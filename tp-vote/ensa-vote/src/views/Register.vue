@@ -1,22 +1,40 @@
 <template>
-  <div class="container mt-5">
-    <h2 class="text-center mb-4">Inscription</h2>
+  <div class="register-bg d-flex justify-content-center align-items-center min-vh-100">
 
-    <div class="card p-4 shadow">
-      <input v-model="email" class="form-control mb-3" placeholder="Email ENSA">
-      <input
-        type="password"
-        v-model="password"
-        class="form-control mb-3"
-        placeholder="Mot de passe (min 6 caractères)"
-      >
+    <div class="register-card shadow-lg p-4 rounded-4 bg-white">
 
-      <button class="btn btn-primary w-100" @click="register">Créer un compte</button>
+      <h2 class="text-center fw-bold text-primary mb-3">Créer un compte</h2>
+      <p class="text-center text-muted mb-4">Rejoignez ENSA Vote</p>
 
-      <button class="btn btn-secondary w-100 mt-3" @click="$router.push('/')">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email ENSA</label>
+        <input 
+          v-model="email" 
+          class="form-control form-control-lg rounded-pill"
+          placeholder="ex: nom@uca.ac.ma"
+        >
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Mot de passe</label>
+        <input 
+          type="password"
+          v-model="password"
+          class="form-control form-control-lg rounded-pill"
+          placeholder="Min. 8 caractères"
+        >
+      </div>
+
+      <button class="btn btn-primary btn-lg w-100 rounded-pill shadow-sm mb-3" @click="register">
+        Créer un compte
+      </button>
+
+      <button class="btn btn-outline-secondary w-100 rounded-pill" @click="$router.push('/')">
         Retour
       </button>
+
     </div>
+
   </div>
 </template>
 
@@ -34,18 +52,16 @@ export default {
   },
   methods: {
     async register() {
-      // Vérification email ENSA
+
       if (!this.email.endsWith("@uca.ac.ma")) {
         return alert("Utilisez un email ENSA (@uca.ac.ma)");
       }
 
- 
       if (this.password.length < 8) {
         return alert("Le mot de passe doit contenir au moins 8 caractères");
       }
 
       try {
-        
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           this.email,
@@ -54,14 +70,12 @@ export default {
 
         const user = userCredential.user;
 
-        // Création d'un PROFIL dans Firestore
         await setDoc(doc(db, "Users", user.uid), {
           email: this.email,
-          role: "student", // étudiant par défaut
+          role: "student",
           createdAt: new Date()
         });
 
-        // Redirection vers Home
         this.$router.push("/home");
 
       } catch (e) {
@@ -72,4 +86,27 @@ export default {
 };
 </script>
 
+<style scoped>
+/* Dégradé bleu-ENSa */
+.register-bg {
+  background: linear-gradient(135deg, #004aad, #00a8ff);
+  animation: fadeIn 0.8s ease-in-out;
+}
 
+/* Carte principale */
+.register-card {
+  width: 420px;
+  animation: slideUp 0.6s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
