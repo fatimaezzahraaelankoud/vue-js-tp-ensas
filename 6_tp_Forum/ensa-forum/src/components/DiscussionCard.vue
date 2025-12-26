@@ -1,19 +1,22 @@
 <template>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title" @click="$router.push('/discussion/' + id)" style="cursor:pointer">{{ title }}</h5>
-      <p class="card-text text-muted">par {{ author }} • {{ date }}</p>
-      <p>{{ excerpt }}</p>
-      <div class="d-flex justify-content-between">
-        <small class="text-muted">{{ replies }} réponses</small>
-        <small class="text-muted">{{ category }}</small>
-      </div>
+  <div class="card mb-3 p-3 shadow-sm">
+    <h5 class="mb-1">{{ title }}</h5>
+
+    <p class="text-muted mb-2" style="font-size:14px">{{ excerpt }}</p>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <small class="text-muted">{{ replies }} réponses</small>
+
+      <button class="btn btn-outline-primary btn-sm" @click="$router.push('/discussion/' + id)">
+        Voir discussion
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['id','title','excerpt','author','date','replies','category']
+  props:["id","title","excerpt","author","date","replies","category"]
 }
 </script>
+
